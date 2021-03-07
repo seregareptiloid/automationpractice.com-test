@@ -2,7 +2,7 @@ using NUnit.Framework;
 
 namespace automationpractice_test
 {
-    public class Tests
+    public class TestBase
     {
         [SetUp]
         public void Setup()
