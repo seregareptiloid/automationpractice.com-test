@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace automationpractice_test.model
+namespace automationpractice_test.Model
 {
     public class Customer
     {
