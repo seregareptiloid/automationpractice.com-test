@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace automationpractice_test.model
+namespace automationpractice_test.Model
 {
     public class Customer
     {
@@ -18,6 +18,7 @@ namespace automationpractice_test.model
         public string City { get; internal set; }
         public string State { get; internal set; }
         public string PhoneNumber { get; internal set; }
+        public string ZipCode { get; internal set; }
 
     }
 }
