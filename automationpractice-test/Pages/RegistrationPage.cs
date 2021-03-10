@@ -12,6 +12,8 @@ namespace automationpractice_test.Pages
         public RegistrationPage(IWebDriver driver) : base(driver)
         {
             this.driver = driver;
+            
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
         }
 
         internal RegistrationPage Open()
@@ -23,63 +25,44 @@ namespace automationpractice_test.Pages
         internal void SelectGender(bool gender)
         {
             if (gender == true)
-                FemaleGenderSelect.Click();
+                chkFemaleGender.Click();
 
             if (gender == false)
-                MaleGenderSelect.Click();
+                chkMaleGender.Click();
         }
 
         internal void SelectState(string stateName)
         {
-            new SelectElement(StateSelection).SelectByText(stateName);
+            new SelectElement(ddlStateSelection).SelectByText(stateName);
         }
 
-        internal void SelectDate(string day, string month, string year)
+        internal void SelectBirthDate(string day, string month, string year)
         {
-            new SelectElement(DaySelection).SelectByText(day);
-            new SelectElement(MonthSelection).SelectByText(month);
-            new SelectElement(YearSelection).SelectByText(year);
+            new SelectElement(dtpDay).SelectByValue(day);
+            new SelectElement(dtpMonth).SelectByValue(month);
+            new SelectElement(dtpYear).SelectByValue(year);
         }
-
-
 
         #region PageElements
-        [FindsBy(How = How.Id, Using = "email_create")]
-        IWebElement EmailInput;
-        [FindsBy(How = How.Id, Using = "uniform-id_gender1")]
-        IWebElement MaleGenderSelect;
-        [FindsBy(How = How.Id, Using = "uniform-id_gender2")]
-        IWebElement FemaleGenderSelect;
-        [FindsBy(How = How.Id, Using = "customer_firstname")]
-        IWebElement FirstNameInput;
-        [FindsBy(How = How.Id, Using = "customer_lastname")]
-        IWebElement LastNameInput;
-        [FindsBy(How = How.Id, Using = "passwd")]
-        IWebElement PasswordInput;
-        [FindsBy(How = How.Id, Using = "days")]
-        IWebElement DaySelection;
-        [FindsBy(How = How.Id, Using = "months")]
-        IWebElement MonthSelection;
-        [FindsBy(How = How.Id, Using = "years")]
-        IWebElement YearSelection;
-        [FindsBy(How = How.Id, Using = "firstname")]
-        IWebElement AdressFirstNameInput;
-        [FindsBy(How = How.Id, Using = "lastname")]
-        IWebElement AdressLastNameInput;
-        [FindsBy(How = How.Id, Using = "address1")]
-        IWebElement AdressInput;
-        [FindsBy(How = How.Id, Using = "city")]
-        IWebElement CityInput;
-        [FindsBy(How = How.Id, Using = "id_state")]
-        IWebElement StateSelection;
-        [FindsBy(How = How.Id, Using = "postcode")]
-        IWebElement ZipCodeInput;
-        [FindsBy(How = How.Id, Using = "id_country")]
-        IWebElement CountrySelection;
-        [FindsBy(How = How.Id, Using = "phone_mobile")]
-        IWebElement PhoneInput;
-        [FindsBy(How = How.Id, Using = "submitAccount")]
-        IWebElement SubmitButton;
+        internal IWebElement txtEmail => driver.FindElement(By.Id("email_create"));
+        internal IWebElement chkMaleGender => driver.FindElement(By.Id("uniform-id_gender1"));
+        internal IWebElement chkFemaleGender => driver.FindElement(By.Id("uniform-id_gender2"));
+        internal IWebElement txtFirstName => driver.FindElement(By.Id("customer_firstname"));
+        internal IWebElement txtLastName => driver.FindElement(By.Id("customer_lastname"));
+        internal IWebElement txtPassword => driver.FindElement(By.Id("passwd"));
+        internal IWebElement dtpDay => driver.FindElement(By.Id("days"));
+        internal IWebElement dtpMonth => driver.FindElement(By.Id("months"));
+        internal IWebElement dtpYear => driver.FindElement(By.Id("years"));
+        internal IWebElement dtpAdressFirstName => driver.FindElement(By.Id("firstname"));
+        internal IWebElement dtpAdressLastName => driver.FindElement(By.Id("lastname"));
+        internal IWebElement dtpAdress => driver.FindElement(By.Id("address1"));
+        internal IWebElement dtpCityInput => driver.FindElement(By.Id("city"));
+        internal IWebElement ddlStateSelection => driver.FindElement(By.Id("id_state"));
+        internal IWebElement txtZipCode => driver.FindElement(By.Id("postcode"));
+        internal IWebElement ddlCountry => driver.FindElement(By.Id("id_country"));
+        internal IWebElement txtPhone => driver.FindElement(By.Id("phone_mobile"));
+        internal IWebElement btnRegistration => driver.FindElement(By.Id("submitAccount"));
+        internal IWebElement btnCreate => driver.FindElement(By.Id("SubmitCreate"));
 
         #endregion
     }

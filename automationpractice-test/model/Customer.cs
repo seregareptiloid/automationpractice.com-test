@@ -18,6 +18,7 @@ namespace automationpractice_test.Model
         public string City { get; internal set; }
         public string State { get; internal set; }
         public string PhoneNumber { get; internal set; }
+        public string ZipCode { get; internal set; }
 
     }
 }
